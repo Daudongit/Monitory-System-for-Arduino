@@ -24,12 +24,12 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         // $router->bind('user', function($slug) {
-        Route::bind('device', function($device) {
-            dd($device);
-            // $user = App\User::where('slug', $slug)->first();
-            // if (!$user) App::abort(404);
-            // return $user;
-        });
+        // Route::bind('device', function($device) {
+        //     dd($device);
+        //     // $user = App\User::where('slug', $slug)->first();
+        //     // if (!$user) App::abort(404);
+        //     // return $user;
+        // });
 
         parent::boot();
     }
