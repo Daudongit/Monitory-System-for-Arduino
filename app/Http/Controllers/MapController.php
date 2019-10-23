@@ -11,8 +11,8 @@ class MapController extends Controller
     public function index($device = 0){
         // Log::info('log from index');
         // dd($device);
-        $maps = $device==0?Map::paginate(20):
-            Map::where('device_id',$device)->paginate(20);
+        $maps = $device==0?Map::latest():
+            Map::where('device_id',$device)->latest();
 
         if($device == 0)
 	    {
@@ -26,7 +26,7 @@ class MapController extends Controller
         }
         
         $devices = Device::all();
-
+		$maps = $maps->paginate(20);
         return view(
             'map.index',
             compact('maps','activeDevice','devices')
