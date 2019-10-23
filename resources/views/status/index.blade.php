@@ -4,10 +4,9 @@
       <div class="row"> 
           <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
-                  <div class="panel-heading text-center"><h4>Select Device</h4></div>
-                  {{-- <div class="panel-body">
-                    
-                  </div> --}}
+                  <div class="panel-heading text-center">
+                    <h4>INTRUDER MONITORING SYSTEM</h4>
+                  </div>
               </div>
           </div>
       </div>
@@ -18,7 +17,8 @@
                       Device Status
                   </div>
                   <div class="panel-body">
-                      <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <table id="datatable-buttons" 
+                        class="table table-striped table-bordered">
                         <thead>
                           <tr>
                             <th>S/N</th>

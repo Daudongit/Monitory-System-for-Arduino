@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Device;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,7 +25,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $apiNamespace = 'App\Http\Controllers\Api';
-    
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -32,13 +33,18 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $router->bind('user', function($slug) {
-        // Route::bind('device', function($device) {
-        //     dd($device);
-        //     // $user = App\User::where('slug', $slug)->first();
-        //     // if (!$user) App::abort(404);
-        //     // return $user;
-        // });
+        Route::bind('device', function($device) {
+            if($device == 0){
+                $device = new Device();
+                $device->id = 0;
+                $device->name = 'All';
+            }
+            else{
+                $device = Device::findOrfail($device);
+            }
+
+            return $device;
+        });
 
         parent::boot();
     }
