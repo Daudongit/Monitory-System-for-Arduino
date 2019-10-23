@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -33,7 +34,31 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function usernameField(){
+        return strpos(request('email'), '@') === false?
+            'username':'email';
+    }
+
+    protected function redirectTo(){
+        $username = auth()->user()->username;
+        return $username == 'status'?'/status':
+            ($username == 'map'?'/map':'/home');  
+    }
+
+    protected function credentials(Request $request)
+    {           
+        $username = $this->usernameField();
+
+        $credentials = [
+            $username => $request->email,
+            'password'=> $request->password
+        ];
+
+        return $credentials;
     }
 }

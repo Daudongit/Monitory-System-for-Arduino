@@ -42,7 +42,7 @@
                         <tbody>
                           @foreach ($maps as $map)
                             <tr>
-                                  <td>{{ $loop->index }}</td>
+                                  <td>{{ $loop->index +1 }}</td>
                                   <td>{{ $map->latitude }}</td>
                                   <td>{{ $map->longitude }}</td>
                                   <td>{{ $map->intoxicant_level }}</td>

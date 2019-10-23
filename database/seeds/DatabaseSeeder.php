@@ -10,11 +10,25 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        $password = bcrypt('secret');
         // $this->call(UsersTableSeeder::class);
         factory(App\User::class)->create([
             'email'=>'admin@mail.com',
-            'password'=>'secret'
+            'username'=>'admin',
+            'password'=>$password
+        ]);
+
+        factory(App\User::class)->create([
+            'email'=>'map@mail.com',
+            'username'=>'map',
+            'password'=>$password
+        ]);
+
+        factory(App\User::class)->create([
+            'email'=>'status@mail.com',
+            'username'=>'status',
+            'password'=>$password
         ]);
 
         $devices = factory(App\Device::class,5)->create();
@@ -24,6 +38,8 @@ class DatabaseSeeder extends Seeder
                 'device_id'=>$device->id
             ]);
         });
+
+        factory(App\Status::class, 80)->create();
         
     }
 }

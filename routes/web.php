@@ -12,9 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
 
-Route::get('/map/{device?}', 'MapController@index')->name('map');
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/map/{device?}', 'MapController@index')->name('map');
+    Route::get('/status', 'StatusController@index')->name('status');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::group(['middleware'=>'guest'], function(){
+});
+
