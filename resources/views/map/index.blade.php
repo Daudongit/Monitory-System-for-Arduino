@@ -46,7 +46,7 @@
                                   <td>{{ $map->latitude }}</td>
                                   <td>{{ $map->longitude }}</td>
                                   <td>{{ $map->intoxicant_level }}</td>
-                                  <td>{{ $map->created_at->diffforhumans() }}</td>
+                                  <td>{{ $map->created_at->toDayDateTimeString() }}</td>
                                   <td>
                                       <a href="https://www.google.com/maps/place/{{$map->latitude}},
                                           {{$map->longitude}}/{{'@'.$map->latitude}},

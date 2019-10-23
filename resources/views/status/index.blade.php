@@ -31,7 +31,8 @@
                             <tr>
                                 <td>{{ $loop->index +1 }}</td>
                                 <td>{{ $stus->status }}</td>
-                                <td>{{ $stus->created_at->diffforhumans() }}</td>
+                                {{-- <td>{{ $stus->created_at->diffforhumans() }}</td> --}}
+                                <td>{{ $stus->created_at->toDayDateTimeString() }}</td>
                             </tr> 
                           @endforeach
                         </tbody>
